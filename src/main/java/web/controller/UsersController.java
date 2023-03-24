@@ -1,5 +1,6 @@
 package web.controller;
 
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -8,6 +9,7 @@ import web.service.UserService;
 
 
 @Controller
+
 public class UsersController {
 
     private final UserService userService;
@@ -21,7 +23,7 @@ public class UsersController {
         return "users/allusers";
     }
     @GetMapping("/{id}")
-    public String show(@PathVariable("id") int id, Model model){
+    public String show(@PathVariable("id") Long id, Model model){
         model.addAttribute("user",userService.getUser(id));
         return "users/showuser";
     }
@@ -37,7 +39,7 @@ public class UsersController {
     }
 
     @DeleteMapping("/deleteUser{id}")
-    public String deleteUser(@RequestParam(value = "id") int id) {
+    public String deleteUser(@RequestParam(value = "id") Long id) {
         userService.removeUserById(id);
         return "redirect:/";
     }

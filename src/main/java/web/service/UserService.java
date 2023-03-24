@@ -5,7 +5,7 @@ import web.models.User;
 import java.util.List;
 
 public interface UserService {
-    User getUser(int id);
+    User getUser(Long id);
 
     void updateUser(User user);
 
